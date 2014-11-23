@@ -1,19 +1,28 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Agency -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Agency %></h1>
+</div>
 
-<p>
-  <strong>Agency name:</strong>
-  <%= @agency.agency_name %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:agency_name) %></dt>
+      <dd><pre class="prettyprint"><%= @agency.agency_name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:email) %></dt>
+      <dd><pre class="prettyprint"><%= @agency.email %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:password) %></dt>
+      <dd><pre class="prettyprint"><%= @agency.password %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @agency.email %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              agencies_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_agency_path(@agency), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              agency_path(@agency),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Password:</strong>
-  <%= @agency.password %>
-</p>
-
-<%= link_to 'Edit', edit_agency_path(@agency) %> |
-<%= link_to 'Back', agencies_path %>
